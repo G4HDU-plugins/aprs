@@ -1,0 +1,69 @@
+//
+//Google earth server on Raspberry Pi ( perl script )
+#!/usr/bin/perl
+#
+# Amateur Radio APRS packer Parser
+#
+use DBI;
+use Net::Telnet;
+use Ham::APRS::FAP qw(parseaprs);
+my $database_handler =  DBI->connect("DBI:mysql:database=aprs;host=localhost;port=3306","root","");
+my $host = "first.aprs.net.au";
+my $port = "14579";
+#my $port = "10152";
+my $t = new Net::Telnet(Timeout => '600',Dump_log => 'dump.log',Input_log => 'input.log',Output_log => 'output.log',Prompt => "/$prmt/");
+$t->errmode('die');
+$t->Net::Telnet::open(Host => $host, Port => $port);
+print $t "user callsign pass 12345 vers perl script filter p/VK\n";
+while (<$t>)
+{
+my $aprspacket = $_;
+my %packetdata;
+my $retval = parseaprs($aprspacket, \%packetdata);
+if ($retval == 1)
+{
+while (my ($key, $value) = each(%packetdata))
+{
+#print $key;
+#print "$key: $value\n";
+if ($key eq "srccallsign")
+{
+$callsign = ($value);
+}
+if ($key eq "latitude")
+{
+$latitude = ($value);
+}
+if ($key eq "longitude")
+{
+$longitude = ($value);
+}
+if ($key eq "comment")
+{
+$comment = ($value);
+}
+if ($key eq "type")
+{
+$type = ($value);
+}
+}
+#print "Call: $callsign Lat: $latitude Lon: $longitude \n";
+#
+# MySQL database
+#
+if ($type =~ m/location/)
+{
+print "Call: $callsign Lat: $latitude Lon: $longitude \n";
+$sql = "delete from aprs_targets where callsign = '$callsign'" ;
+$statement_handler =$database_handler->prepare ($sql);
+$statement_handler->execute ;
+$sql = "insert into aprs_targets values (now(),'$callsign','$latitude','$longitude')" ;
+$statement_handler =$database_handler->prepare ($sql);
+$statement_handler->execute ;
+}
+}
+else
+{
+warn "Parsing failed: $packetdata{resultmsg} ($packetdata{resultcode})\n";
+}
+}

@@ -1,0 +1,38 @@
+object(stdClass)[63]
+  public 'command' => string 'get' (length=3)
+  public 'result' => string 'ok' (length=2)
+  public 'what' => string 'loc' (length=3)
+  public 'found' => int 2
+  public 'entries' =>
+    array (size=2)
+      0 =>
+        object(stdClass)[64]
+          public 'class' => string 'a' (length=1)
+          public 'name' => string 'G4HDU-9' (length=7)
+          public 'type' => string 'l' (length=1)
+          public 'time' => string '1432210907' (length=10)
+          public 'lasttime' => string '1432211378' (length=10)
+          public 'lat' => string '53.51550' (length=8)
+          public 'lng' => string '-2.93567' (length=8)
+          public 'altitude' => float 62.7888
+          public 'symbol' => string '/k' (length=2)
+          public 'srccall' => string 'G4HDU-9' (length=7)
+          public 'dstcall' => string 'APDR13' (length=6)
+          public 'comment' => string 'http://g4hdu.co.uk At home asleep' (length=33)
+          public 'path' => string 'TCPIP*,qAC,T2UKRAINE' (length=20)
+      1 =>
+        object(stdClass)[65]
+          public 'class' => string 'a' (length=1)
+          public 'name' => string 'G4HDU-10' (length=8)
+          public 'type' => string 'l' (length=1)
+          public 'time' => string '1429739985' (length=10)
+          public 'lasttime' => string '1429739985' (length=10)
+          public 'lat' => string '53.51533' (length=8)
+          public 'lng' => string '-2.93600' (length=8)
+          public 'altitude' => string '49.99' (length=5)
+          public 'speed' => string '7' (length=1)
+          public 'symbol' => string '/[' (length=2)
+          public 'srccall' => string 'G4HDU-10' (length=8)
+          public 'dstcall' => string 'APDR13' (length=6)
+          public 'comment' => string 'http://g4hdu.co.uk' (length=18)
+          public 'path' => string 'TCPIP*,qAC,T2UKRAINE' (length=20)

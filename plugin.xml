@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e107Plugin name="APRS Plugin" lan="LAN_PLUGIN__APRS_NAME" version="2.0" date="2012-08-01" compatibility="2.0" installRequired="true" >
+	<author name="Barry Keal G4HDU" url="http://www.g4hdu.co.uk" />
+	<summary>A Plugin to interface with APRS</summary>
+	<description lan="LAN_PLUGIN__APRS_DIZ">A Plugin to interface with APRS</description>
+	<category>misc</category>
+	<keywords>
+		<word>aprs</word>
+		<word>empty</word>
+		<word>template</word>
+	</keywords>
+	<adminLinks>
+		<link url='admin_config.php' description='Configure APRS Plugin' icon='images/aprs_32.png' iconSmall='images/aprs_16.png' primary='true' >LAN_CONGIGURE</link>
+		<link url="admin_config.php?mode=options" description="Configure APRS Prefs" icon="manage" >APRS Prefs</link>
+	</adminLinks>
+	<siteLinks>
+		<link url="{e_PLUGIN}aprs/index.php" perm='everyone' sef='aprs-plugin'>LAN_PLUGIN__APRS_LINK</link>
+	</siteLinks>
+	<pluginPrefs>
+		<pref name="aprs_pref_1">1</pref>
+		<pref name="aprs_pref_2">[more...]</pref>
+	</pluginPrefs>
+	<userClasses>
+		<class name="aprs_userclass" description="APRS Userclass Description" />
+	</userClasses>
+	<extendedFields>
+		<field name="custom" type='EUF_TEXTAREA' default='0' active="true" />
+	</extendedFields>
+</e107Plugin>
